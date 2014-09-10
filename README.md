@@ -7,4 +7,6 @@ To Integrate this just drag and drop that single file ImageVideoPicker.swift int
 
         var imagePicker:ImageVideoPicker? = ImageVideoPicker(originVC: self) { (capturedImage) -> Void in
             //
+            
+            //use the returned image  |capturedImage|
         }
