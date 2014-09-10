@@ -15,22 +15,25 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
     
     var originVC:UIViewController?
     
-    //Closure to callback captured image     
     typealias imageCaptureClosure = (capturedImage:UIImage?)->Void
+    
     var imageCompletionClosure:imageCaptureClosure?
     
     
     //MARK: - View Life Cycle Methods
-    init(originVC:UIViewController, completionBlock:imageCaptureClosure){
+    
+    init(frame:CGRect, superVC originVC:UIViewController, completionBlock:imageCaptureClosure){
         self.originVC = originVC
         self.imageCompletionClosure = completionBlock
-        super.init()
+        
+        super.init(frame:frame)
         
         //Display Capture Options to the User....
         self.showImagePickerActionSheet()
     }
     
-    
+
+
     required init(coder aDecoder: NSCoder) {
         self.originVC = nil
         self.imageCompletionClosure = nil
@@ -42,7 +45,7 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
     //MARK:- Private Methods
     
     func showImagePickerActionSheet(){
-        var actionSheet = UIAlertController(title: " ", message:"Take Pic", preferredStyle: UIAlertControllerStyle.Alert)
+        var actionSheet = UIAlertController(title: " ", message:"Take Pic ", preferredStyle: UIAlertControllerStyle.ActionSheet)
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:handleCancelAction))
         actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler:handleCameraAction))
         actionSheet.addAction(UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Destructive, handler:handlePhotoLibAction))
