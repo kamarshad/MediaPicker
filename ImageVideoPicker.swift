@@ -42,10 +42,10 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
     //MARK:- Private Methods
     
     func showImagePickerActionSheet(){
-        var actionSheet = UIAlertController(title: " ", message:" ", preferredStyle: UIAlertControllerStyle.Alert)
+        var actionSheet = UIAlertController(title: " ", message:"Take Pic", preferredStyle: UIAlertControllerStyle.Alert)
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:handleCancelAction))
         actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler:handleCameraAction))
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Default, handler:handlePhotoLibAction))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Destructive, handler:handlePhotoLibAction))
 
         self.originVC!.presentViewController(actionSheet, animated: true, completion: nil)
     }
