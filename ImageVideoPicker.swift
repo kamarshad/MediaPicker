@@ -15,8 +15,8 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
     
     var originVC:UIViewController?
     
+    //Closure to callback captured image     
     typealias imageCaptureClosure = (capturedImage:UIImage?)->Void
-    
     var imageCompletionClosure:imageCaptureClosure?
     
     
