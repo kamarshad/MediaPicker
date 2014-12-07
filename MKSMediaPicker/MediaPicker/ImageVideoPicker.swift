@@ -97,7 +97,7 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
         cameraUI.sourceType = .Camera;
         // Displays a control that allows the user to choose picture or
         // movie capture, if both are available:
-        cameraUI.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera)
+        cameraUI.mediaTypes = UIImagePickerController.availableMediaTypesForSourceType(.Camera)!
         
         // Hides the controls for moving & scaling pictures, or for
         // trimming movies. To instead show the controls, use YES.
