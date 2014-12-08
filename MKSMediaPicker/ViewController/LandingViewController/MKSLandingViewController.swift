@@ -103,7 +103,10 @@ class MKSLandingViewController: UIViewController {
             
         })
     }
-
     
+    
+    override func supportedInterfaceOrientations() -> Int {
+        return UIInterfaceOrientationMask.LandscapeLeft.rawValue.hashValue | UIInterfaceOrientationMask.LandscapeRight.rawValue.hashValue
+    }
   }
 
