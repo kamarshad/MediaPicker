@@ -15,7 +15,7 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
     
     var originVC:UIViewController?
     
-    typealias imageCaptureClosure = (capturedImage:UIImage?)->Void
+    typealias imageCaptureClosure = (isCaptureSuccessfully:Bool?)->Void
     
     var imageCompletionClosure:imageCaptureClosure?
     
@@ -29,7 +29,6 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
         super.init(frame:frame)
         
         //Display Capture Options to the User....
-        self.showImagePickerActionSheet()
     }
     
 
@@ -42,20 +41,24 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
     }
     
     
-    //MARK:- Private Methods
     
-    func showImagePickerActionSheet(){
-        var actionSheet = UIAlertController(title: " ", message:"Take Pic ", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:handleCancelAction))
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler:handleCameraAction))
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Destructive, handler:handlePhotoLibAction))
-
-        self.originVC!.presentViewController(actionSheet, animated: true, completion: nil)
+    func showImagePickerActionSheet(sender:AnyObject){
+        var actionContrller = UIAlertController(title: " ", message:"Take Pic ", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        actionContrller.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:handleCancelAction))
+        actionContrller.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler:handleCameraAction))
+        actionContrller.addAction(UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Destructive, handler:handlePhotoLibAction))
+        
+        if let popoverController = actionContrller.popoverPresentationController {
+            actionContrller.popoverPresentationController!.sourceView = sender as UIView
+           // actionContrller.popoverPresentationController!.sourceRect = CGRectMake(self.originVC!.view.frame.size.width-300, 60, 300, 400)
+        }
+        self.originVC!.presentViewController(actionContrller, animated: true, completion: nil)
     }
-    
+
+    //MARK:- Private Methods
     private func handleCancelAction(alertAction:UIAlertAction!){
-        self.imageCompletionClosure!(capturedImage:nil)
-        self.originVC!.dismissViewControllerAnimated(true, completion:nil)
+        self.imageCompletionClosure!(isCaptureSuccessfully: false);
+        self.originVC!.dismissViewControllerAnimated(false, completion:nil)
         
     }
     
@@ -117,10 +120,27 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
         
         if (self.imageCompletionClosure != nil)
         {
-            self.imageCompletionClosure!(capturedImage: tempImage);
+            //Save Captured Image in Document Directory......
+            String.createImageDirectoryIfNeedWithCompletion(folderName: "CapturedImages", completionBlock: { (directoryPath,fileCount) -> Void in
+                
+                let currentTimeStamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
+
+                var imagePath = "\(directoryPath)/\(fileCount).png"
+                
+                if !imagePath.isEmpty {
+                    
+                    var imageData:NSData = UIImageJPEGRepresentation(tempImage, 0.8)
+                    imageData.writeToFile(imagePath, atomically:true)
+                    NSLog("Image Path is \(imagePath)")
+                    picker.dismissViewControllerAnimated(true,completion:nil);
+
+                    self.imageCompletionClosure!(isCaptureSuccessfully: true);
+
+                }
+            })
+            
             
         }
-        picker.dismissViewControllerAnimated(true,completion:nil);
         
     }
     
@@ -128,7 +148,7 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
     {
         if (self.imageCompletionClosure != nil)
         {
-            self.imageCompletionClosure!(capturedImage: nil);
+            self.imageCompletionClosure!(isCaptureSuccessfully: false);
         }
         
         picker.dismissViewControllerAnimated(true,completion:nil);

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CA3357E1A3588AA002DB3AB /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA3357D1A3588AA002DB3AB /* FileUtil.swift */; };
 		CD3225F11A346F4400251BDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3225EF1A346F4400251BDF /* Main.storyboard */; };
 		CD3225F31A346F4400251BDF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3225F21A346F4400251BDF /* Images.xcassets */; };
 		CD3225F61A346F4400251BDF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3225F41A346F4400251BDF /* LaunchScreen.xib */; };
 		CD3226021A346F4400251BDF /* MKSMediaPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3226011A346F4400251BDF /* MKSMediaPickerTests.swift */; };
 		CD32260D1A34713200251BDF /* ImageVideoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32260C1A34713200251BDF /* ImageVideoPicker.swift */; };
 		CD3226131A34717900251BDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32260F1A34717900251BDF /* AppDelegate.swift */; };
-		CD3226141A34717900251BDF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3226121A34717900251BDF /* ViewController.swift */; };
+		CD3226141A34717900251BDF /* MKSLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3226121A34717900251BDF /* MKSLandingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CA3357D1A3588AA002DB3AB /* FileUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		CD3225E61A346F4400251BDF /* MKSMediaPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MKSMediaPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3225EA1A346F4400251BDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD3225F01A346F4400251BDF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,7 +39,7 @@
 		CD3226011A346F4400251BDF /* MKSMediaPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSMediaPickerTests.swift; sourceTree = "<group>"; };
 		CD32260C1A34713200251BDF /* ImageVideoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVideoPicker.swift; sourceTree = "<group>"; };
 		CD32260F1A34717900251BDF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD3226121A34717900251BDF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CD3226121A34717900251BDF /* MKSLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKSLandingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8CA3357B1A3588AA002DB3AB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8CA3357C1A3588AA002DB3AB /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8CA3357C1A3588AA002DB3AB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8CA3357D1A3588AA002DB3AB /* FileUtil.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		CD3225DD1A346F4400251BDF = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +97,7 @@
 		CD3225E81A346F4400251BDF /* MKSMediaPicker */ = {
 			isa = PBXGroup;
 			children = (
+				8CA3357B1A3588AA002DB3AB /* Utils */,
 				CD32260E1A34717900251BDF /* AppDelegate */,
 				CD3226101A34717900251BDF /* ViewController */,
 				CD32260B1A34713200251BDF /* MediaPicker */,
@@ -141,7 +160,7 @@
 		CD3226111A34717900251BDF /* LandingViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CD3226121A34717900251BDF /* ViewController.swift */,
+				CD3226121A34717900251BDF /* MKSLandingViewController.swift */,
 			);
 			path = LandingViewController;
 			sourceTree = "<group>";
@@ -255,9 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD3226141A34717900251BDF /* ViewController.swift in Sources */,
+				CD3226141A34717900251BDF /* MKSLandingViewController.swift in Sources */,
 				CD3226131A34717900251BDF /* AppDelegate.swift in Sources */,
 				CD32260D1A34713200251BDF /* ImageVideoPicker.swift in Sources */,
+				8CA3357E1A3588AA002DB3AB /* FileUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
