@@ -92,28 +92,6 @@
                                         </constraints>
                                         <size key="customSize" width="260" height="220"/>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DisplayCapturedImageCell" id="8Xb-D9-8d4">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="260" height="220"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3ai-DE-MDR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="220"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="0.84379242290000001" blue="0.62036517329999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="3ai-DE-MDR" firstAttribute="leading" secondItem="8Xb-D9-8d4" secondAttribute="leading" id="6KK-1M-cYp"/>
-                                            <constraint firstItem="3ai-DE-MDR" firstAttribute="top" secondItem="8Xb-D9-8d4" secondAttribute="top" id="9v6-rG-e36"/>
-                                            <constraint firstAttribute="bottom" secondItem="3ai-DE-MDR" secondAttribute="bottom" id="Dds-DM-AL4"/>
-                                            <constraint firstAttribute="trailing" secondItem="3ai-DE-MDR" secondAttribute="trailing" id="wXT-a5-Xjy"/>
-                                        </constraints>
-                                        <size key="customSize" width="260" height="220"/>
-                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="vHr-6U-Wcg"/>
