@@ -11,7 +11,6 @@ import Foundation
 
 extension String{
     
-    
     static func documentsDirectoryPath()->String?{
         var documentsPath:String? = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0] as? String
         return documentsPath
@@ -96,14 +95,6 @@ extension String{
     }
     
     
-    static func captureImagePath(imageName:String)->String?{
-        var docsDirPath:String = self.documentsDirectoryPath()!
-        var yourContentsDirPath:String? = docsDirPath.stringByAppendingPathComponent("BaggageImages")
-        yourContentsDirPath = yourContentsDirPath!.stringByAppendingPathComponent(imageName)
-        
-        return yourContentsDirPath
-        
-    }
     
     static func addSkipBackupAttributeToPath(path:String) {
         var fileURL = NSURL(fileURLWithPath: path)
