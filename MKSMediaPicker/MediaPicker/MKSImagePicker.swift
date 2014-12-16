@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class MKSImagePicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     //MARK:- PROPERTIES
     
@@ -49,8 +49,7 @@ class ImageVideoPicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDel
         actionContrller.addAction(UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Destructive, handler:handlePhotoLibAction))
         
         if let popoverController = actionContrller.popoverPresentationController {
-            actionContrller.popoverPresentationController!.sourceView = sender as UIView
-           // actionContrller.popoverPresentationController!.sourceRect = CGRectMake(self.originVC!.view.frame.size.width-300, 60, 300, 400)
+            actionContrller.popoverPresentationController!.barButtonItem = sender as UIBarButtonItem
         }
         self.originVC!.presentViewController(actionContrller, animated: true, completion: nil)
     }

@@ -13,7 +13,7 @@ class MKSLandingViewController: UIViewController {
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     
     var capturedImages:NSArray?
-    var mediaPicker :ImageVideoPicker?
+    var mediaPicker :MKSImagePicker?
     
     override func viewDidLoad() {
         
@@ -72,7 +72,7 @@ class MKSLandingViewController: UIViewController {
        
         if(self.mediaPicker == nil){
             
-        self.mediaPicker = ImageVideoPicker(frame: self.view.frame, superVC: self, completionBlock: { (isFinshed) -> Void in
+        self.mediaPicker = MKSImagePicker(frame: self.view.frame, superVC: self, completionBlock: { (isFinshed) -> Void in
            
             if(isFinshed != nil){
                 NSLog("Image captured properly")
@@ -86,7 +86,7 @@ class MKSLandingViewController: UIViewController {
         })
         }
         
-        self.mediaPicker?.showImagePickerActionSheet(sender)
+        self.mediaPicker?.showImagePickerActionSheet(sender )
         
     }
 

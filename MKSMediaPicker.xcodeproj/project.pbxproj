@@ -12,7 +12,7 @@
 		CD3225F31A346F4400251BDF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3225F21A346F4400251BDF /* Images.xcassets */; };
 		CD3225F61A346F4400251BDF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD3225F41A346F4400251BDF /* LaunchScreen.xib */; };
 		CD3226021A346F4400251BDF /* MKSMediaPickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3226011A346F4400251BDF /* MKSMediaPickerTests.swift */; };
-		CD32260D1A34713200251BDF /* ImageVideoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32260C1A34713200251BDF /* ImageVideoPicker.swift */; };
+		CD32260D1A34713200251BDF /* MKSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32260C1A34713200251BDF /* MKSImagePicker.swift */; };
 		CD3226131A34717900251BDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32260F1A34717900251BDF /* AppDelegate.swift */; };
 		CD3226141A34717900251BDF /* MKSLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3226121A34717900251BDF /* MKSLandingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -37,7 +37,7 @@
 		CD3225FB1A346F4400251BDF /* MKSMediaPickerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MKSMediaPickerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3226001A346F4400251BDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD3226011A346F4400251BDF /* MKSMediaPickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSMediaPickerTests.swift; sourceTree = "<group>"; };
-		CD32260C1A34713200251BDF /* ImageVideoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVideoPicker.swift; sourceTree = "<group>"; };
+		CD32260C1A34713200251BDF /* MKSImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKSImagePicker.swift; sourceTree = "<group>"; };
 		CD32260F1A34717900251BDF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD3226121A34717900251BDF /* MKSLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKSLandingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,7 +136,7 @@
 		CD32260B1A34713200251BDF /* MediaPicker */ = {
 			isa = PBXGroup;
 			children = (
-				CD32260C1A34713200251BDF /* ImageVideoPicker.swift */,
+				CD32260C1A34713200251BDF /* MKSImagePicker.swift */,
 			);
 			path = MediaPicker;
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 			files = (
 				CD3226141A34717900251BDF /* MKSLandingViewController.swift in Sources */,
 				CD3226131A34717900251BDF /* AppDelegate.swift in Sources */,
-				CD32260D1A34713200251BDF /* ImageVideoPicker.swift in Sources */,
+				CD32260D1A34713200251BDF /* MKSImagePicker.swift in Sources */,
 				8CA3357E1A3588AA002DB3AB /* FileUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
