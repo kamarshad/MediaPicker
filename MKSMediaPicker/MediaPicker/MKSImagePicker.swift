@@ -33,7 +33,7 @@ class MKSImagePicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDeleg
     
 
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         self.originVC = nil
         self.imageCompletionClosure = nil
         super.init(coder: aDecoder)
@@ -43,13 +43,13 @@ class MKSImagePicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDeleg
     
     
     func showImagePickerActionSheet(sender:AnyObject){
-        var actionContrller = UIAlertController(title: " ", message:"Take Pic ", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let actionContrller = UIAlertController(title: " ", message:"Take Pic ", preferredStyle: UIAlertControllerStyle.ActionSheet)
         actionContrller.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:handleCancelAction))
         actionContrller.addAction(UIAlertAction(title: "Camera", style: UIAlertActionStyle.Default, handler:handleCameraAction))
         actionContrller.addAction(UIAlertAction(title: "Photo Library", style: UIAlertActionStyle.Destructive, handler:handlePhotoLibAction))
         
-        if let popoverController = actionContrller.popoverPresentationController {
-            actionContrller.popoverPresentationController!.barButtonItem = sender as UIBarButtonItem
+        if let _ = actionContrller.popoverPresentationController {
+            actionContrller.popoverPresentationController!.barButtonItem = sender as? UIBarButtonItem
         }
         self.originVC!.presentViewController(actionContrller, animated: true, completion: nil)
     }
@@ -78,7 +78,7 @@ class MKSImagePicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDeleg
                 
             }
             
-            var libraryUI = UIImagePickerController()
+            let libraryUI = UIImagePickerController()
             libraryUI.delegate = delegate
             controller!.presentViewController(libraryUI, animated: true, completion:nil)
             
@@ -94,7 +94,7 @@ class MKSImagePicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDeleg
             
         }
         
-        var cameraUI = UIImagePickerController()
+        let cameraUI = UIImagePickerController()
         cameraUI.delegate = delegate
         cameraUI.sourceType = .Camera;
         // Displays a control that allows the user to choose picture or
@@ -112,34 +112,36 @@ class MKSImagePicker: UIView,UIActionSheetDelegate, UIImagePickerControllerDeleg
     }
     
     //MARK: - UIImagePickerControllerDelegate delegate methods
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]!)
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         
-        let tempImage = info[UIImagePickerControllerOriginalImage] as UIImage
+        //Below is the additional code not required if you just pass the image to your own completion handler accordingly.
+        let tempImage = info[UIImagePickerControllerOriginalImage] as! UIImage
         
         if (self.imageCompletionClosure != nil)
         {
             //Save Captured Image in Document Directory......
             String.createImageDirectoryIfNeedWithCompletion(folderName: "CapturedImages", completionBlock: { (directoryPath,fileCount) -> Void in
-                
-                let currentTimeStamp = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: .MediumStyle, timeStyle: .ShortStyle)
 
-                var imagePath = "\(directoryPath)/\(fileCount).png"
+                
+                let imagePath = "\(directoryPath)/\(fileCount).png"
                 
                 if !imagePath.isEmpty {
                     
-                    var imageData:NSData = UIImageJPEGRepresentation(tempImage, 0.8)
+                    let imageData:NSData = UIImagePNGRepresentation(tempImage)!
+                    
                     imageData.writeToFile(imagePath, atomically:true)
+                   
                     NSLog("Image Path is \(imagePath)")
+                    
                     picker.dismissViewControllerAnimated(true,completion:nil);
 
                     self.imageCompletionClosure!(isCaptureSuccessfully: true);
 
                 }
             })
-            
-            
         }
+        //end
         
     }
     

@@ -12,15 +12,15 @@ import Foundation
 extension String{
     
     static func documentsDirectoryPath()->String?{
-        var documentsPath:String? = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0] as? String
+        let documentsPath:String? = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask, true)[0]
         return documentsPath
         
     }
     
     static func savedImageDirPath(imageName:String)->String?{
-        var imagesDirPath:String? = self.documentsDirectoryPath()
-        var yourContentsDirPath = imagesDirPath?.stringByAppendingPathComponent("CapturedImages")
-        var imageAbsolutePath = yourContentsDirPath?.stringByAppendingPathComponent(imageName)
+        let imagesDirPath:String? = self.documentsDirectoryPath()
+        let yourContentsDirPath = imagesDirPath!.stringByAppendingString("CapturedImages")
+        let imageAbsolutePath = yourContentsDirPath.stringByAppendingString(imageName)
         return imageAbsolutePath
 
     }
@@ -29,13 +29,19 @@ extension String{
     {
         var numberOfContentsInDirectory:Int?
         
-        var docsDirPath:String? = self.documentsDirectoryPath()
+        let docsDirPath:String? = self.documentsDirectoryPath()
         
-        var yourContentsDirPath = docsDirPath?.stringByAppendingPathComponent(docsDirPath!)
+        let yourContentsDirPath = docsDirPath!.stringByAppendingString(docsDirPath!)
         
         var error:NSErrorPointer?
         
-        var filelist:AnyObject? =  NSFileManager.defaultManager().contentsOfDirectoryAtPath(yourContentsDirPath!, error:error!)
+        var filelist:AnyObject?
+        do {
+            filelist = try NSFileManager.defaultManager().contentsOfDirectoryAtPath(yourContentsDirPath)
+        } catch let error1 as NSError {
+            error!.memory = error1
+            filelist = nil
+        }
         
         if ((error) != nil) {
             NSLog("Error in getNoOfFilesInDirectoryInDirectory method");
@@ -47,15 +53,19 @@ extension String{
         return numberOfContentsInDirectory;
     }
     
-    static func createImageDirectoryIfNeedWithCompletion(#folderName :String, completionBlock:(directoryPath:String, fileCount:Int)->Void)
+    static func createImageDirectoryIfNeedWithCompletion(folderName folderName :String, completionBlock:(directoryPath:String, fileCount:Int)->Void)
     {
-        var docsDirPath:String = self.documentsDirectoryPath()!
-        var yourContentsDirPath = docsDirPath.stringByAppendingPathComponent(folderName)
+        let docsDirPath:String = self.documentsDirectoryPath()!
+        let yourContentsDirPath = (docsDirPath as NSString).stringByAppendingPathComponent(folderName)
         var isDir : ObjCBool = true
         var error: NSError? = nil
         let fileManager = NSFileManager.defaultManager()
         if !fileManager.fileExistsAtPath(yourContentsDirPath, isDirectory: &isDir)  {
-            fileManager.createDirectoryAtPath(yourContentsDirPath, withIntermediateDirectories: false, attributes: nil, error:&error)
+            do {
+                try fileManager.createDirectoryAtPath(yourContentsDirPath, withIntermediateDirectories: false, attributes: nil)
+            } catch let error1 as NSError {
+                error = error1
+            }
         }
         
         if (error != nil) {
@@ -64,7 +74,13 @@ extension String{
             
         }
         
-        let contents = fileManager.contentsOfDirectoryAtPath(yourContentsDirPath, error: &error)
+        let contents: [AnyObject]?
+        do {
+            contents = try fileManager.contentsOfDirectoryAtPath(yourContentsDirPath)
+        } catch let error1 as NSError {
+            error = error1
+            contents = nil
+        }
 
         if(contents != nil){
             completionBlock(directoryPath:yourContentsDirPath,fileCount:contents!.count );
@@ -81,14 +97,20 @@ extension String{
     
     
     static  func getContentsOfDirectoryAtPath(path: String, block: (filenames: [String], error: NSError?) -> ()) {
-        var docsDirPath:String = self.documentsDirectoryPath()!
-        var yourContentsDirPath = docsDirPath.stringByAppendingPathComponent(path)
+        let docsDirPath:String = self.documentsDirectoryPath()!
+        let yourContentsDirPath = (docsDirPath as NSString).stringByAppendingPathComponent(path)
             var error: NSError? = nil
             let fileManager = NSFileManager.defaultManager()
-            let contents = fileManager.contentsOfDirectoryAtPath(yourContentsDirPath, error: &error)
+            let contents: [AnyObject]?
+            do {
+                contents = try fileManager.contentsOfDirectoryAtPath(yourContentsDirPath)
+            } catch let newError as NSError {
+                error = newError
+                contents = nil
+            }
 
            if contents != nil {
-                let filenames = contents as [String]
+                let filenames = contents as! [String]
                 NSLog("Contet count is \(filenames.count)")
                 block(filenames: filenames, error: nil)
             }
@@ -96,28 +118,38 @@ extension String{
     
     
     
+    //MARK: Add skip to resource.
+    
+    /*
     static func addSkipBackupAttributeToPath(path:String) {
-        var fileURL = NSURL(fileURLWithPath: path)
-       // self.addSkipBackupAttributeToPath(fileURL!);
+        let fileURL = NSURL(fileURLWithPath: path)
+        self.addSkipBackupAttributeToPath(fileURL);
     }
     
-//    static func addSkipBackupAttributeToPath(URL:NSURL) ->Bool{
-//        
-//        let fileManager = NSFileManager.defaultManager()
-//        var isFileExist = fileManager.fileExistsAtPath(URL.absoluteString!)
-//        if isFileExist {
-//        var error:NSError?
-//        let success:Bool = URL.setResourceValue(NSNumber.numberWithBool(true),forKey: NSURLIsExcludedFromBackupKey, error: &error)
-//         if !success{
-//            
-//            println("Error excluding \(URL.lastPathComponent) from backup \(error)")
-//        }
-//            return success;
-//        }
-//        else
-//        {
-//            return false;
-//        
-//        }
-//      }
+    static func addSkipBackupAttributeToPath(URL:NSURL) ->Bool{
+        
+        let fileManager = NSFileManager.defaultManager()
+        var isFileExist = fileManager.fileExistsAtPath(URL.absoluteString)
+        if isFileExist {
+        var error:NSError?
+    do {
+        let success =  try URL.setResourceValue(true, forKey: NSURLIsExcludedFromBackupKey)
+
+        if !success{
+            print("Error excluding \(URL.lastPathComponent) from backup \(error)")
+        }
+            return success;
+        }
+    catch {
+        print(error)
+    }
+    }
+    }
+        else
+        {
+            return false;
+        
+        }
+      }
+*/
 }

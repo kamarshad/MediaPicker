@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+let kCellIdentifier: String = "CustomCollectionViewCell";
+
 class MKSLandingViewController: UIViewController {
 
     @IBOutlet weak var imagesCollectionView: UICollectionView!
@@ -19,22 +22,21 @@ class MKSLandingViewController: UIViewController {
         
         super.viewDidLoad()
 
-        
         self.updateDataSource()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.imagesCollectionView.registerNib(UINib.init(nibName: kCellIdentifier, bundle: nil), forCellWithReuseIdentifier: kCellIdentifier)
+        
+        
+        let flow = self.imagesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flow.minimumInteritemSpacing = 3
+        flow.minimumLineSpacing = 3
+        flow.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        flow.itemSize = self.appropriateCellSize(6, numberOfItemPerRow:2)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-
-    //MARK: CollectionView
-    
-    func configureCollectionView(){
-        var cellNib:UINib = UINib(nibName: "LXMBottomCollectionViewStatusCell", bundle: NSBundle.mainBundle());
-        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -49,22 +51,34 @@ class MKSLandingViewController: UIViewController {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-
+        let collectionViewCell:UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(kCellIdentifier, forIndexPath: indexPath) as UICollectionViewCell;
         
-        var collectionViewCell:UICollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("DisplayCapturedImageCell", forIndexPath: indexPath) as UICollectionViewCell;
-        
-        
-        var statusImageView:UIImageView = collectionViewCell.viewWithTag(11) as UIImageView;
-        var imagePath =  self.capturedImages!.objectAtIndex(indexPath.row)as String
-        var absoluteImagePath:String = String.savedImageDirPath(imagePath)!
-
-        statusImageView.image  = UIImage(contentsOfFile:absoluteImagePath)
-        
+        if let statusImageView = collectionViewCell.contentView.viewWithTag(111) as? UIImageView{
+            let imageName =  self.capturedImages!.objectAtIndex(indexPath.row)as! String
+            let imagePath:String = String.savedImageDirPath(imageName)!
+            statusImageView.image  = UIImage(contentsOfFile: imagePath)
+        }
         return collectionViewCell;
         
         
     }
     
+    /*
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        return appropriateCellSize(3);
+        
+    }
+    */
+    func  appropriateCellSize(spacing:CGFloat, numberOfItemPerRow: Int)->CGSize{
+    
+        let width = Int((UIScreen .mainScreen().bounds.size.width - spacing))/numberOfItemPerRow;
+    
+        print("cell width is \(width)")
+        
+        return CGSize(width: width, height: width);
+        
+    }
     
     //MARK: Capture Image
     
@@ -104,9 +118,5 @@ class MKSLandingViewController: UIViewController {
         })
     }
     
-    
-    override func supportedInterfaceOrientations() -> Int {
-        return UIInterfaceOrientationMask.LandscapeLeft.rawValue.hashValue | UIInterfaceOrientationMask.LandscapeRight.rawValue.hashValue
-    }
-  }
+}
 

@@ -15,6 +15,8 @@
 		CD32260D1A34713200251BDF /* MKSImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32260C1A34713200251BDF /* MKSImagePicker.swift */; };
 		CD3226131A34717900251BDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD32260F1A34717900251BDF /* AppDelegate.swift */; };
 		CD3226141A34717900251BDF /* MKSLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3226121A34717900251BDF /* MKSLandingViewController.swift */; };
+		CD7890661D0CB7FF0019F9A5 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7890641D0CB7FF0019F9A5 /* CustomCollectionViewCell.swift */; };
+		CD7890671D0CB7FF0019F9A5 /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD7890651D0CB7FF0019F9A5 /* CustomCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		CD32260C1A34713200251BDF /* MKSImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKSImagePicker.swift; sourceTree = "<group>"; };
 		CD32260F1A34717900251BDF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD3226121A34717900251BDF /* MKSLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKSLandingViewController.swift; sourceTree = "<group>"; };
+		CD7890641D0CB7FF0019F9A5 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		CD7890651D0CB7FF0019F9A5 /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				CD3226121A34717900251BDF /* MKSLandingViewController.swift */,
+				CD7890641D0CB7FF0019F9A5 /* CustomCollectionViewCell.swift */,
+				CD7890651D0CB7FF0019F9A5 /* CustomCollectionViewCell.xib */,
 			);
 			path = LandingViewController;
 			sourceTree = "<group>";
@@ -218,6 +224,8 @@
 		CD3225DE1A346F4400251BDF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = KSMobileSoft;
 				TargetAttributes = {
@@ -257,6 +265,7 @@
 				CD3225F11A346F4400251BDF /* Main.storyboard in Resources */,
 				CD3225F61A346F4400251BDF /* LaunchScreen.xib in Resources */,
 				CD3225F31A346F4400251BDF /* Images.xcassets in Resources */,
+				CD7890671D0CB7FF0019F9A5 /* CustomCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD3226141A34717900251BDF /* MKSLandingViewController.swift in Sources */,
+				CD7890661D0CB7FF0019F9A5 /* CustomCollectionViewCell.swift in Sources */,
 				CD3226131A34717900251BDF /* AppDelegate.swift in Sources */,
 				CD32260D1A34713200251BDF /* MKSImagePicker.swift in Sources */,
 				8CA3357E1A3588AA002DB3AB /* FileUtil.swift in Sources */,

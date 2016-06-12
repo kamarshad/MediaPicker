@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hRj-e1-opl">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Landing View Controller-->
+        <!--Media Picker-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MKSLandingViewController" customModule="MKSMediaPicker" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,53 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="3Ka-2V-ilx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="barTintColor" red="0.51764705882352757" green="0.097456660583941604" blue="0.56632071167883213" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <navigationItem title="Media Picker" id="aR5-se-xSO">
-                                        <barButtonItem key="rightBarButtonItem" title="Take Image +" style="plain" id="cMG-GR-fZv">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="takeMedia:" destination="BYZ-38-t0r" id="wx6-i1-u2A"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mzA-GT-7c7">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mzA-GT-7c7">
                                 <rect key="frame" x="0.0" y="66" width="600" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="NRw-zu-ho6">
-                                    <size key="itemSize" width="460" height="300"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="qbW-dK-Vst">
+                                    <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="30" minY="30" maxX="30" maxY="30"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DisplayCapturedImageCell" id="oth-eI-jtJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="460" height="300"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="11" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TIt-5i-lbb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <color key="backgroundColor" red="1" green="0.84379242290000001" blue="0.62036517329999996" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="TIt-5i-lbb" firstAttribute="top" secondItem="oth-eI-jtJ" secondAttribute="top" id="7Sk-hT-s2H"/>
-                                            <constraint firstAttribute="bottom" secondItem="TIt-5i-lbb" secondAttribute="bottom" id="9bI-56-vTD"/>
-                                            <constraint firstAttribute="trailing" secondItem="TIt-5i-lbb" secondAttribute="trailing" id="kOV-4b-rsE"/>
-                                            <constraint firstItem="TIt-5i-lbb" firstAttribute="leading" secondItem="oth-eI-jtJ" secondAttribute="leading" id="zuv-nX-Y03"/>
-                                        </constraints>
-                                        <size key="customSize" width="460" height="300"/>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="vHr-6U-Wcg"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="AX0-AT-Wg9"/>
@@ -72,73 +35,64 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mzA-GT-7c7" secondAttribute="bottom" constant="2" id="03N-X7-WcM"/>
-                            <constraint firstAttribute="trailing" secondItem="3Ka-2V-ilx" secondAttribute="trailing" id="0Ln-sd-GjH"/>
-                            <constraint firstItem="3Ka-2V-ilx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1rP-Bj-5RH"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="3Ka-2V-ilx" secondAttribute="trailing" constant="-16" id="58l-Dm-CCm"/>
-                            <constraint firstItem="3Ka-2V-ilx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="F9w-nZ-eeQ"/>
-                            <constraint firstItem="3Ka-2V-ilx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="GLr-83-huk"/>
-                            <constraint firstItem="mzA-GT-7c7" firstAttribute="top" secondItem="3Ka-2V-ilx" secondAttribute="bottom" id="NBB-PH-KOf"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mzA-GT-7c7" secondAttribute="trailing" constant="-16" id="NJB-Ol-rTn"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mzA-GT-7c7" secondAttribute="bottom" constant="2" id="Vnh-gC-O2R"/>
-                            <constraint firstItem="3Ka-2V-ilx" firstAttribute="trailing" secondItem="mzA-GT-7c7" secondAttribute="trailing" id="g1H-NX-z6B"/>
-                            <constraint firstItem="3Ka-2V-ilx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ri3-gN-2QF"/>
-                            <constraint firstItem="3Ka-2V-ilx" firstAttribute="leading" secondItem="mzA-GT-7c7" secondAttribute="leading" id="tZZ-zo-SCo"/>
-                            <constraint firstItem="3Ka-2V-ilx" firstAttribute="bottom" secondItem="mzA-GT-7c7" secondAttribute="top" id="wTw-Sz-e9E"/>
-                            <constraint firstItem="mzA-GT-7c7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="ysY-Lm-15A"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mzA-GT-7c7" secondAttribute="bottom" id="95k-xJ-5w6"/>
+                            <constraint firstItem="mzA-GT-7c7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="SVH-Wi-z9h"/>
+                            <constraint firstItem="mzA-GT-7c7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dsF-ZP-alL"/>
+                            <constraint firstAttribute="trailing" secondItem="mzA-GT-7c7" secondAttribute="trailing" id="vaU-8x-MqP"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="3Ka-2V-ilx"/>
-                            </mask>
                             <mask key="constraints">
-                                <exclude reference="0Ln-sd-GjH"/>
-                                <exclude reference="1rP-Bj-5RH"/>
-                                <exclude reference="58l-Dm-CCm"/>
-                                <exclude reference="F9w-nZ-eeQ"/>
-                                <exclude reference="GLr-83-huk"/>
-                                <exclude reference="g1H-NX-z6B"/>
-                                <exclude reference="ri3-gN-2QF"/>
-                                <exclude reference="tZZ-zo-SCo"/>
-                                <exclude reference="wTw-Sz-e9E"/>
-                                <exclude reference="NBB-PH-KOf"/>
-                                <exclude reference="NJB-Ol-rTn"/>
-                                <exclude reference="ysY-Lm-15A"/>
-                                <exclude reference="03N-X7-WcM"/>
-                                <exclude reference="Vnh-gC-O2R"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=regular">
-                            <mask key="subviews">
-                                <include reference="3Ka-2V-ilx"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="0Ln-sd-GjH"/>
-                                <include reference="1rP-Bj-5RH"/>
-                                <include reference="g1H-NX-z6B"/>
-                                <include reference="ri3-gN-2QF"/>
-                                <include reference="tZZ-zo-SCo"/>
-                                <include reference="wTw-Sz-e9E"/>
-                                <include reference="03N-X7-WcM"/>
+                                <exclude reference="SVH-Wi-z9h"/>
+                                <exclude reference="dsF-ZP-alL"/>
+                                <exclude reference="vaU-8x-MqP"/>
+                                <exclude reference="95k-xJ-5w6"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
-                                <include reference="58l-Dm-CCm"/>
-                                <include reference="F9w-nZ-eeQ"/>
-                                <include reference="GLr-83-huk"/>
-                                <include reference="NBB-PH-KOf"/>
-                                <include reference="NJB-Ol-rTn"/>
-                                <include reference="ysY-Lm-15A"/>
-                                <include reference="Vnh-gC-O2R"/>
+                                <include reference="SVH-Wi-z9h"/>
+                                <include reference="dsF-ZP-alL"/>
+                                <include reference="vaU-8x-MqP"/>
+                                <include reference="95k-xJ-5w6"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Media Picker" id="aR5-se-xSO">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="cMG-GR-fZv">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="takeMedia:" destination="BYZ-38-t0r" id="wx6-i1-u2A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imagesCollectionView" destination="mzA-GT-7c7" id="zmj-tz-DV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957.75" y="333"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="y0r-br-o5j">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hRj-e1-opl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="std-0D-prU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.7843137255" green="0.78039215689999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="NW7-lX-CSq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5yT-KH-eDy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="198.75" y="333"/>
         </scene>
